@@ -8,15 +8,19 @@ public class Internacao {
     private String data_saida; 
     private String causa;
     private String quarto;
+    private String created_at;
+    private String deleted_at;
 
-    public Internacao(int id, int paciente_id, String data_entrada, 
-     String data_saida, String causa, String quarto) {
-         this.id = id;
-         this.paciente_id = paciente_id;
-         this.data_entrada = data_entrada;
-         this.data_saida = data_saida;
-         this.causa = causa;
-         this.quarto = quarto;
+    public Internacao(int id, int paciente_id, String data_entrada, String data_saida, 
+    String causa, String quarto, String created_at, String deleted_at) {
+        this.id = id;
+        this.paciente_id = paciente_id;
+        this.data_entrada = data_entrada;
+        this.data_saida = data_saida;
+        this.causa = causa;
+        this.quarto = quarto;
+        this.created_at = created_at;
+        this.deleted_at = deleted_at;
      }
 
     public int getId() {
@@ -54,6 +58,18 @@ public class Internacao {
     }
     public void setQuarto(String quarto) {
         this.quarto = quarto;
+    }
+    public String getCreatedAt() {
+        return created_at;
+    }
+    public void setCreatedAt(String created_at) {
+        this.created_at = created_at;
+    }
+    public String getDeletedAt() {
+        return deleted_at;
+    }
+    public void setDeletedAt(String deleted_at) {
+        this.deleted_at = deleted_at;
     }
 
 }

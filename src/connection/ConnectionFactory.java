@@ -2,6 +2,8 @@ package connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
@@ -21,16 +23,41 @@ public class ConnectionFactory {
             throw new RuntimeException("Erro na conexao: ", ex);
         }
     }
+
     public static void closeConnection(Connection con) {
         closeConnection(con);
     }
-
-    public static void main(String[] args) throws Exception{
-        Connection con = getConnection();
-        if(con != null){
-            System.out.println("Conexao estabelecida com sucesso");
-            con.close();
+    
+    public static void closeConnection(Connection con, PreparedStatement stmt) {
+		
+		closeConnection(con);
+		try {
+			if(stmt != null) {
+				stmt.close();
+			}
+		} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+    public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) {
+    
+        closeConnection(con, stmt);
+        try {
+            if(rs != null) {
+                rs.close();
+            }
+        } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-    }
+
+    // test connection
+    // public static void main(String[] args) throws Exception{
+    //     Connection con = getConnection();
+    //     if(con != null){
+    //         System.out.println("Conexao estabelecida com sucesso");
+    //         con.close();
+    //     }
+    // }
 
 }
